@@ -1,11 +1,11 @@
 package com.example.hr.domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import com.example.ddd.ValueObject;
 
@@ -43,19 +43,14 @@ public final class Departments {
 		// validation
 		if (values.contains(department))
 			throw new IllegalArgumentException("%s already exists in the list".formatted(department));
-	    var newList = new ArrayList<>(values);
-	    newList.add(department);
-		return new Departments(newList);
+		return new Departments(Stream.concat(values.stream(), Stream.of(department)).toList());
 	}
 
 	public Departments removeDepartment(Department department) {
 		// validation
 		if (!values.contains(department))
 			throw new IllegalArgumentException("%s already exists in the list".formatted(department));
-		var newList = new ArrayList<>(values);
-		newList.remove(department);
-		Predicate<Department> equals = Predicate.isEqual(department);
-		return new Departments(values.stream().filter(equals.negate()).toList());
+		return new Departments(values.stream().filter(Predicate.isEqual(department).negate()).toList());
 	}
 
 }
