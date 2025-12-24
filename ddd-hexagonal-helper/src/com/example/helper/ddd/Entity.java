@@ -1,4 +1,4 @@
-package com.example.ddd;
+package com.example.helper.ddd;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

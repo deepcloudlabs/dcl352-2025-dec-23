@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import com.example.ddd.ValueObject;
+import com.example.helper.ddd.ValueObject;
 
 // Immutable
 @ValueObject

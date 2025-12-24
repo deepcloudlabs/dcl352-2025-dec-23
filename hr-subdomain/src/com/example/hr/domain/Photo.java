@@ -3,7 +3,7 @@ package com.example.hr.domain;
 import java.util.Base64;
 import java.util.Objects;
 
-import com.example.ddd.ValueObject;
+import com.example.helper.ddd.ValueObject;
 
 @ValueObject
 public record Photo(byte[] values) {

@@ -1,6 +1,6 @@
 package com.example.hr.domain.policies;
 
-import com.example.ddd.ValueObject;
+import com.example.helper.ddd.ValueObject;
 import com.example.hr.domain.ContractType;
 import com.example.hr.domain.Departments;
 import com.example.hr.domain.Salary;

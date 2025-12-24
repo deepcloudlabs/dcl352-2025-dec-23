@@ -2,7 +2,7 @@ package com.example.hr.domain;
 
 import java.time.LocalDateTime;
 
-import com.example.ddd.Entity;
+import com.example.helper.ddd.Entity;
 import com.example.hr.domain.exceptions.PolicyException;
 import com.example.hr.domain.policies.EmployeeSalaryProposal;
 import com.example.hr.domain.policies.POLICY;
@@ -36,6 +36,70 @@ public class Employee {
 		this.payment = builder.payment;
 		this.salary = builder.salary;
 		this.birthYear = builder.birthYear;
+	}
+
+	public TcKimlikNo getIdentityNo() {
+		return identityNo;
+	}
+
+	public void setIdentityNo(TcKimlikNo identityNo) {
+		this.identityNo = identityNo;
+	}
+
+	public FullName getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(FullName fullName) {
+		this.fullName = fullName;
+	}
+
+	public Departments getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(Departments departments) {
+		this.departments = departments;
+	}
+
+	public ContractType getContractType() {
+		return contractType;
+	}
+
+	public void setContractType(ContractType contractType) {
+		this.contractType = contractType;
+	}
+
+	public Photo getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+
+	public PaymentDetails getPayment() {
+		return payment;
+	}
+
+	public void setPayment(PaymentDetails payment) {
+		this.payment = payment;
+	}
+
+	public Salary getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Salary salary) {
+		this.salary = salary;
+	}
+
+	public BirthYear getBirthYear() {
+		return birthYear;
+	}
+
+	public void setBirthYear(BirthYear birthYear) {
+		this.birthYear = birthYear;
 	}
 
 	public static class Builder {
@@ -150,5 +214,16 @@ public class Employee {
 		// Regulations
 		// Invariants
 		
+	}
+
+	public Employee raiseSalary(RaiseRate rate) {
+		// Constraints
+		// Validation Rules
+		// Business Rules
+		// Policies
+		// Regulations
+		// Invariants
+		this.salary = this.salary.raise(rate);
+		return this;
 	}
 }

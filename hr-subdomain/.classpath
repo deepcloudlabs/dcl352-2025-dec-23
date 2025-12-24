@@ -6,7 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="/dd-helper">
+	<classpathentry kind="src" path="/ddd-hexagonal-helper">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
