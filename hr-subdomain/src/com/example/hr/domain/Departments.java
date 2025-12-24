@@ -54,7 +54,7 @@ public final class Departments {
 			throw new IllegalArgumentException("%s already exists in the list".formatted(department));
 		var newList = new ArrayList<>(values);
 		newList.remove(department);
-		Predicate<Department> equals = dept -> dept == department;
+		Predicate<Department> equals = Predicate.isEqual(department);
 		return new Departments(values.stream().filter(equals.negate()).toList());
 	}
 
