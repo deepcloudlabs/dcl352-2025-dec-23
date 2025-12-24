@@ -37,7 +37,7 @@ class HrWebSocketListener implements Listener {
 
 	@Override
 	public CompletionStage<?> onClose(WebSocket webSocket, int statusCode, String reason) {
-		System.out.println("Disconnected from the binance ws server.");
+		System.out.println("Disconnected from the ws server.");
 		return Listener.super.onClose(webSocket, statusCode, reason);
 	}
 
