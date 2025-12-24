@@ -1,6 +1,12 @@
 package com.example.hr.domain;
 
+import java.time.LocalDateTime;
+
 import com.example.ddd.Entity;
+import com.example.hr.domain.exceptions.PolicyException;
+import com.example.hr.domain.policies.EmployeeSalaryProposal;
+import com.example.hr.domain.policies.POLICY;
+import com.example.hr.domain.policies.SalarySpecification;
 
 // Sub-domain : Analysis    --> Bounded-Context (BC) : Design --> Aggregate
 //               1          --> 1.**                          --> 1..* 
@@ -41,6 +47,7 @@ public class Employee {
 		PaymentDetails payment;
 		Salary salary;
 		BirthYear birthYear;
+		private SalarySpecification salarySpecification;
 
 		public Builder() {
 		}
@@ -100,15 +107,48 @@ public class Employee {
 			return this;
 		}
 
-		public Employee build() {
+		public Employee hire() {
 			// Constraints
 			// Validation Rules
 			// Business Rules
 			// Policies
 			// Regulations
 			// Invariants
+			var proposal = new EmployeeSalaryProposal(salary,departments,contractType);
+			if (!salarySpecification.isSatifiedBy(proposal)) {
+				throw new PolicyException(POLICY.MINIMUM_WAGE);
+			}
 			return new Employee(this);
 		}
 	}
 
+	public void adjustSalary(Salary newSalary,LocalDateTime effectiveDate) {
+		// Constraints
+		// Validation Rules
+		// Business Rules
+		// Policies
+		// Regulations
+		// Invariants
+		
+	}
+	
+	public void updateBankAccount(Iban newIban) {
+		// Constraints
+		// Validation Rules
+		// Business Rules
+		// Policies
+		// Regulations
+		// Invariants
+		
+	}
+	
+	public void changeContractType(ContractType newContractType) {
+		// Constraints
+		// Validation Rules
+		// Business Rules
+		// Policies
+		// Regulations
+		// Invariants
+		
+	}
 }

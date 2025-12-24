@@ -4,5 +4,7 @@ import com.example.ddd.ValueObject;
 
 @ValueObject
 public enum ContractType {
-	FULL_TIME, PART_TIME, INTERN, FREELANCE
+	FULL_TIME_REMOTE, 
+	FULL_TIME_HYBRID, 
+	PART_TIME, INTERN, FREELANCE
 }
