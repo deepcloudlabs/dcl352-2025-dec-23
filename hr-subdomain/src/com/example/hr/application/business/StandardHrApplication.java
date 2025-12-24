@@ -17,16 +17,17 @@ import com.example.hr.infrastructure.EventPublisher;
 import com.example.hr.repository.EmployeeRepository;
 
 public class StandardHrApplication implements HrApplication {
-	private EmployeeRepository employeeRepository;
-	private EventPublisher<HrEvent> eventPublisher;
-	
-	public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+	private final EmployeeRepository employeeRepository;
+	private final EventPublisher<HrEvent> eventPublisher;
+
+	public StandardHrApplication(EmployeeRepository employeeRepository, EventPublisher<HrEvent> eventPublisher) {
 		this.employeeRepository = employeeRepository;
+		this.eventPublisher = eventPublisher;
 	}
 
 	@Override
 	public Optional<Employee> findByIdentity(TcKimlikNo identity) {
-		return employeeRepository.findById();
+		return employeeRepository.findById(identity);
 	}
 
 	@Override
@@ -57,17 +58,13 @@ public class StandardHrApplication implements HrApplication {
 	public List<Employee> raiseSalary(Department department, RaiseRate rate) {
 		Consumer<Employee> raiseSalary = employee -> employee.raiseSalary(rate);
 		Consumer<Employee> publishEvent = employee -> {
-			var event = new EmployeeSalaryRaisedEvent(employee.getIdentityNo(),rate,employee.getSalary());
+			var event = new EmployeeSalaryRaisedEvent(employee.getIdentityNo(), rate, employee.getSalary());
 			eventPublisher.publish(event);
 		};
-		
+
 		var employees = employeeRepository.findByDepartment(department);
-		
-		employees.stream()
-		         .forEach(
-		        		 raiseSalary.andThen(employeeRepository::save)
-		        		            .andThen(publishEvent)
-	             );
+
+		employees.stream().forEach(raiseSalary.andThen(employeeRepository::save).andThen(publishEvent));
 		return employees;
 	}
 

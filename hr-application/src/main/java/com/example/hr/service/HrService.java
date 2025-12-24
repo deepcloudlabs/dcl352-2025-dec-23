@@ -31,20 +31,17 @@ public class HrService {
 
 	@Transactional
 	public HireEmployeeResponse hireEmployee(HireEmployeeRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		return HireEmployeeResponse.from(hrApplication.hire(request.toEmployee()));
 	}
 
 	@Transactional
 	public EmployeeResponse fireEmployee(String identity) {
-		// TODO Auto-generated method stub
-		return null;
+		return EmployeeResponse.from(hrApplication.fireEmployee(new TcKimlikNo(identity)));
 	}
 
 	@Transactional
 	public List<EmployeeResponse> raiseSalary(RaiseSalaryRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		return hrApplication.raiseSalary(request.department(), request.rate()).stream().map(EmployeeResponse::from).toList();
 	}
 
 	public PhotoResponse findEmployeePhotoByIdentity(String identity) {

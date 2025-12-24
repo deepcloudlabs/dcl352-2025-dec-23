@@ -14,7 +14,7 @@ import com.example.hr.domain.TcKimlikNo;
 @Port(PortType.DRIVEN)
 public interface EmployeeRepository {
 
-	Optional<Employee> findById();
+	Optional<Employee> findById(TcKimlikNo identity);
 
 	boolean exists(TcKimlikNo identity);
 
