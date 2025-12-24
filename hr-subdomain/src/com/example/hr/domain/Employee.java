@@ -111,7 +111,7 @@ public class Employee {
 		PaymentDetails payment;
 		Salary salary;
 		BirthYear birthYear;
-		private SalarySpecification salarySpecification;
+		private SalarySpecification salarySpecification = new SalarySpecification();
 
 		public Builder() {
 		}

@@ -6,7 +6,7 @@ import com.example.helper.ddd.ValueObject;
 public record RaiseRate(double percentage) {
 
 	public double multiply(double value) {
-		return (1.0+value/100.0) * value;
+		return (1.0+percentage/100.0) * value;
 	}
 
 }
