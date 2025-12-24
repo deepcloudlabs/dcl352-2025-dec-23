@@ -54,7 +54,7 @@ public class HrRestController {
 
 	}
 	
-	@PutMapping("/{identity}")
+	@PutMapping
 	public List<EmployeeResponse> raiseSalary(@RequestBody RaiseSalaryRequest request){
 		return hrService.raiseSalary(request);
 	}	
