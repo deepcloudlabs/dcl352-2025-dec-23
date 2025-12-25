@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Service;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketHandler;
@@ -16,7 +15,7 @@ import com.example.hr.domain.event.HrEvent;
 
 import tools.jackson.databind.ObjectMapper;
 
-@Service
+@WebSocketController
 public class HrEventWebSocketPublisherService implements WebSocketHandler {
 	private final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
 	private final ObjectMapper objectMapper;
