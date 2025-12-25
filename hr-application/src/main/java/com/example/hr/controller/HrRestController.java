@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 
+import com.example.helper.ddd.OHS;
+import com.example.hr.application.HrApplication;
 import com.example.hr.dto.request.HireEmployeeRequest;
 import com.example.hr.dto.request.RaiseSalaryRequest;
 import com.example.hr.dto.response.EmployeeResponse;
@@ -26,6 +28,7 @@ import com.example.hr.service.HrService;
 @RequestMapping("/employees")
 @Validated
 @CrossOrigin
+@OHS(service=HrApplication.class, publishedLanguage="http://localhost:7100/hr/api/v1/v3/api-docs")
 public class HrRestController {
 	private final HrService hrService;
 	

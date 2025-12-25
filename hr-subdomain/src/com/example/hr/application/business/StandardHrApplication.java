@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
+import com.example.helper.hexagonal.Application;
 import com.example.hr.application.HrApplication;
 import com.example.hr.domain.Department;
 import com.example.hr.domain.Employee;
@@ -16,6 +17,7 @@ import com.example.hr.domain.event.HrEvent;
 import com.example.hr.infrastructure.EventPublisher;
 import com.example.hr.repository.EmployeeRepository;
 
+@Application(port=HrApplication.class)
 public class StandardHrApplication implements HrApplication {
 	private final EmployeeRepository employeeRepository;
 	private final EventPublisher<HrEvent> eventPublisher;

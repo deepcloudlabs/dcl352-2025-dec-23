@@ -8,7 +8,7 @@ public final class EmployeeHiredEvent extends HrEvent {
 
 	public EmployeeHiredEvent(Employee employee) {
 		var identity = employee.getIdentityNo();
-		super(EventType.EMPLOYEE_HIRED, identity);
+		super(HrEventType.EMPLOYEE_HIRED, identity);
 		this.employee = employee;
 	}
 

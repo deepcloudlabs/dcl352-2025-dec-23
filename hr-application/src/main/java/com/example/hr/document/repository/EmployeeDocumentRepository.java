@@ -10,5 +10,7 @@ import com.example.hr.domain.Department;
 public interface EmployeeDocumentRepository extends MongoRepository<EmployeeDocument,String>{
 
 	List<EmployeeDocument> findAllByDepartments(Department department);
+	List<EmployeeDocument> findAllByBirthYearBetween(int fromYear,int toYear);
+	
 
 }

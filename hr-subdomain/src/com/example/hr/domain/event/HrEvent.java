@@ -10,10 +10,10 @@ import com.example.hr.domain.TcKimlikNo;
 public sealed abstract class HrEvent permits EmployeeFiredEvent, EmployeeHiredEvent, EmployeeSalaryRaisedEvent {
 	private final String eventId = UUID.randomUUID().toString();
 	private final ZonedDateTime eventDateTime = ZonedDateTime.now();
-	private final EventType type;
+	private final HrEventType type;
 	private final TcKimlikNo identity;
 
-	public HrEvent(EventType type, TcKimlikNo identity) {
+	public HrEvent(HrEventType type, TcKimlikNo identity) {
 		this.type = type;
 		this.identity = identity;
 	}
@@ -22,7 +22,7 @@ public sealed abstract class HrEvent permits EmployeeFiredEvent, EmployeeHiredEv
 		return eventId;
 	}
 
-	public EventType getType() {
+	public HrEventType getType() {
 		return type;
 	}
 

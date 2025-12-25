@@ -1,6 +1,6 @@
 package com.example.hr.domain.event;
 
-public enum EventType {
+public enum HrEventType {
 	EMPLOYEE_HIRED,
 	EMPLOYEE_FIRED,
 	EMPLOYEE_SALARY_RAISED

@@ -24,6 +24,7 @@ public class EmployeeRepositoryMongoAdapter implements EmployeeRepository {
 	}
 
 	@Override
+	//@Cacheable
 	public Optional<Employee> findById(TcKimlikNo identity) {
 		return employeeDocumentRepository.findById(identity.getValue()).map(EmployeeRepositoryMongoAdapter::mapEmployeeDocumentToEmployee);
 	}
@@ -42,6 +43,7 @@ public class EmployeeRepositoryMongoAdapter implements EmployeeRepository {
 
 	@Override
 	@Transactional
+	//@RolesAllowed("ADMIN")
 	public Optional<Employee> remove(TcKimlikNo identity) {
 		var document = employeeDocumentRepository.findById(identity.getValue());
 		if (document.isEmpty()) return Optional.empty();

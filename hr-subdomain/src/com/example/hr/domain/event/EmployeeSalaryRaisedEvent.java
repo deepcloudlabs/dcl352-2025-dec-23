@@ -10,7 +10,7 @@ public final class EmployeeSalaryRaisedEvent extends HrEvent {
 	private final Salary raisedSalary;
 
 	public EmployeeSalaryRaisedEvent(TcKimlikNo identity,RaiseRate rate,Salary raisedSalary) {
-		super(EventType.EMPLOYEE_SALARY_RAISED, identity);
+		super(HrEventType.EMPLOYEE_SALARY_RAISED, identity);
 		this.rate = rate;
 		this.raisedSalary = raisedSalary;
 	}

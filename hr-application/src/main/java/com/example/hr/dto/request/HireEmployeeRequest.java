@@ -2,11 +2,13 @@ package com.example.hr.dto.request;
 
 import java.util.List;
 
+import com.example.helper.hexagonal.DTO;
 import com.example.hr.domain.ContractType;
 import com.example.hr.domain.Department;
 import com.example.hr.domain.Employee;
 import com.example.hr.domain.FiatCurrency;
 
+@DTO(layer="Controller")
 public record HireEmployeeRequest(String identityNo, String firstName, String lastName, List<Department> departments,
 		ContractType contractType, String iban, String countryCode, double salary, FiatCurrency currency,
 		int birthYear,String photo) {
