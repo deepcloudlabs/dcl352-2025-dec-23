@@ -4,7 +4,10 @@ import generated.Messages.MsgEngageCommand;
 import generated.Messages.MsgEngageStatus;
 import generated.Messages.MsgTrack;
 import generated.Messages.Type.MsgOffOnType;
+import generated.Messages.Type.MsgStatusType;
 import generated.Middleware.MdlwareEngageStatus;
+import generated.Middleware.Type.MdlwareStatusType;
+
 import org.arch.api.EngageSupport;
 import org.arch.api.IEngagementHandler;
 import org.arch.api.ITrackInfoHandler;
@@ -75,11 +78,8 @@ public class EngagementService extends EngagementServiceHandler {
 	 */
 	private void registerToTrack(int id) {
 		try {
-			trackSupport.registerToTrackInfo(new ITrackInfoHandler() {
-				
-				@Override
-				public void handle(TrackModel track) {
-					
+			trackSupport.registerToTrackInfo(				
+				(TrackModel track) -> {		
 					MsgTrack msg = new MsgTrack();
 					msg.setxPos(track.getxPos());
 					msg.setyPos(track.getyPos());
@@ -87,7 +87,7 @@ public class EngagementService extends EngagementServiceHandler {
 					msg.setValidity(track.getValidity());
 					msgSender.send(msg);
 				}
-			});
+			);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -107,6 +107,7 @@ public class EngagementService extends EngagementServiceHandler {
 		try {
 			MdlwareEngageStatus engageStatus = new MdlwareEngageStatus();
 			engageStatus.setId(super.serviceId);
+			engageStatus.setStatus(msg.getStatus()==MsgStatusType.IN_PROGRESS ? MdlwareStatusType.IN_PROGRESS : MdlwareStatusType.NOT_IN_PROGRESS);
 			mdlwareReporter.report(engageStatus);
 		} catch (Exception e) {
 			// TODO: handle exception

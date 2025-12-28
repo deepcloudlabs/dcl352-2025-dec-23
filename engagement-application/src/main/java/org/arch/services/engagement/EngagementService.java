@@ -81,11 +81,6 @@ public class EngagementService implements EngagementServiceHandler {
 		}
 	}
 
-	/**
-	 * 1 Hz Periodic while registered
-	 * 
-	 * @param id
-	 */
 	private void registerToTrack(int id) {
 		try {
 			trackSupport.registerToTrackInfo(new ITrackInfoHandler() {
